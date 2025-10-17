@@ -35,7 +35,7 @@ Calculator::Calculator(QObject *parent)
         QString temp = i.toString();
         if (temp == "C") {
             m_buttonlayout.append(3);
-            m_buttoniconsource.append("c.png");
+            m_buttoniconsource.append("qrc:/c.png");
             m_buttontxtvisible.append(false);
         }
         else if (temp == "=") {
