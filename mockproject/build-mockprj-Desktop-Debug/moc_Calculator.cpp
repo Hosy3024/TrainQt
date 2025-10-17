@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Calculator_t {
-    QByteArrayData data[14];
-    char stringdata0[163];
+    QByteArrayData data[15];
+    char stringdata0[185];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,14 +45,15 @@ QT_MOC_LITERAL(9, 91, 6), // "colors"
 QT_MOC_LITERAL(10, 98, 12), // "buttonlayout"
 QT_MOC_LITERAL(11, 111, 19), // "buttonhoveredcolors"
 QT_MOC_LITERAL(12, 131, 19), // "buttonpressedcolors"
-QT_MOC_LITERAL(13, 151, 11) // "buttonicons"
+QT_MOC_LITERAL(13, 151, 16), // "buttoniconsource"
+QT_MOC_LITERAL(14, 168, 16) // "buttontxtvisible"
 
     },
     "Calculator\0displayChanged\0\0subDisplayChanged\0"
     "buttonClicked\0text\0display\0subDisplay\0"
     "buttons\0colors\0buttonlayout\0"
     "buttonhoveredcolors\0buttonpressedcolors\0"
-    "buttonicons"
+    "buttoniconsource\0buttontxtvisible"
 };
 #undef QT_MOC_LITERAL
 
@@ -63,7 +64,7 @@ static const uint qt_meta_data_Calculator[] = {
        0,       // classname
        0,    0, // classinfo
        3,   14, // methods
-       8,   34, // properties
+       9,   34, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -92,10 +93,12 @@ static const uint qt_meta_data_Calculator[] = {
       11, QMetaType::QVariantList, 0x00095401,
       12, QMetaType::QVariantList, 0x00095401,
       13, QMetaType::QVariantList, 0x00095401,
+      14, QMetaType::QVariantList, 0x00095401,
 
  // properties: notify_signal_id
        0,
        1,
+       0,
        0,
        0,
        0,
@@ -147,7 +150,8 @@ void Calculator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: *reinterpret_cast< QVariantList*>(_v) = _t->buttonlayout(); break;
         case 5: *reinterpret_cast< QVariantList*>(_v) = _t->buttonhoveredcolors(); break;
         case 6: *reinterpret_cast< QVariantList*>(_v) = _t->buttonpressedcolors(); break;
-        case 7: *reinterpret_cast< QVariantList*>(_v) = _t->buttonicons(); break;
+        case 7: *reinterpret_cast< QVariantList*>(_v) = _t->buttoniconsource(); break;
+        case 8: *reinterpret_cast< QVariantList*>(_v) = _t->buttontxtvisible(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -197,17 +201,17 @@ int Calculator::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 8;
+        _id -= 9;
     }
 #endif // QT_NO_PROPERTIES
     return _id;

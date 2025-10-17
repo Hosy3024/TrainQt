@@ -35,18 +35,19 @@ Calculator::Calculator(QObject *parent)
         QString temp = i.toString();
         if (temp == "C") {
             m_buttonlayout.append(3);
-
-
-
-
-
-
-
+            m_buttoniconsource.append("c.png");
+            m_buttontxtvisible.append(false);
         }
-        else if (temp == "=")
+        else if (temp == "=") {
             m_buttonlayout.append(2);
-        else
+            m_buttoniconsource.append("");
+            m_buttontxtvisible.append(true);
+        }
+        else {
             m_buttonlayout.append(1);
+            m_buttoniconsource.append("");
+            m_buttontxtvisible.append(true);
+        }
     }
 }
 

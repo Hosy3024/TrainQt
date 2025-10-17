@@ -16,7 +16,8 @@ class Calculator : public QObject {
     Q_PROPERTY(QVariantList buttonlayout READ buttonlayout CONSTANT)
     Q_PROPERTY(QVariantList buttonhoveredcolors READ buttonhoveredcolors CONSTANT)
     Q_PROPERTY(QVariantList buttonpressedcolors READ buttonpressedcolors CONSTANT)
-    Q_PROPERTY(QVariantList buttonicons READ buttonicons CONSTANT)
+    Q_PROPERTY(QVariantList buttoniconsource READ buttoniconsource CONSTANT)
+    Q_PROPERTY(QVariantList buttontxtvisible READ buttontxtvisible CONSTANT)
 
 public:
     Calculator(QObject *parent = nullptr);
@@ -28,7 +29,8 @@ public:
     QVariantList buttonlayout() const { return m_buttonlayout; }
     QVariantList buttonhoveredcolors() const { return m_buttonhoveredcolors; }
     QVariantList buttonpressedcolors() const { return m_buttonpressedcolors; }
-    QVariantList buttonicons() const { return m_buttonicons; }
+    QVariantList buttoniconsource() const { return m_buttoniconsource; }
+    QVariantList buttontxtvisible() const { return m_buttontxtvisible; }
 
     Q_INVOKABLE void buttonClicked(const QString &text);
 
@@ -50,7 +52,8 @@ private:
     QVariantList m_buttonlayout;
     QVariantList m_buttonhoveredcolors;
     QVariantList m_buttonpressedcolors;
-    QVariantList m_buttonicons;
+    QVariantList m_buttoniconsource;
+    QVariantList m_buttontxtvisible;
 
     void clear();
     void calculate(double rightOperand, const QString &op);

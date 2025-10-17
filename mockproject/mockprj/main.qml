@@ -65,7 +65,11 @@ ApplicationWindow {
                         border.color: "black"
                     }
 
-                    contentItem:{
+                    contentItem: ItemContainer {
+                        id: textbuttonID
+                        text: modelData
+                        sourceIcon: calculator.buttoniconsource[index]
+                        txtVisible: calculator.buttontxtvisible[index]
                     }
 
                     MouseArea {

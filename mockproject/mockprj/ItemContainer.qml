@@ -1,15 +1,14 @@
 import QtQuick 2.0
 
 Item {
-    property alias imgortxtVisible: imageID.visible
-    property alias textbutton: textID.text
+    property alias text: textID.text
     property alias txtVisible: textID.visible
+    property alias sourceIcon: imageID.source
 
     Image {
         id: imageID
         anchors.centerIn: parent
         width: 20; height: 20
-        source: "c.png"
         fillMode: Image.PreserveAspectFit
     }
 
