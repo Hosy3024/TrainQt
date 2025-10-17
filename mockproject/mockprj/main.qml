@@ -50,6 +50,7 @@ ApplicationWindow {
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.right: parent.right
+            anchors.margins: 15
 
             Repeater {
                 model: calculator.buttons
@@ -62,6 +63,7 @@ ApplicationWindow {
                     background: Rectangle {
                         id: backgroundID
                         color: calculator.colors[index]
+                        radius: 10
                         border.color: "black"
                     }
 
