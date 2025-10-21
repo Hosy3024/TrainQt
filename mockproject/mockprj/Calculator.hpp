@@ -46,6 +46,7 @@ private:
     QString m_pendingOperator;
     bool m_waitingForOperand;
     bool m_doneCalculate;
+    bool m_pendingRightOperand;
 
     QVariantList m_buttons;
     QVariantList m_colors;

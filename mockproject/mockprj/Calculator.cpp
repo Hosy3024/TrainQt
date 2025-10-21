@@ -7,7 +7,8 @@ Calculator::Calculator(QObject *parent)
       m_subDisplay(""),
       m_leftOperand(0.0),
       m_waitingForOperand(true),
-      m_doneCalculate(true)
+      m_doneCalculate(true),
+      m_pendingRightOperand(false)
 {
     m_buttons = {
         "C", "÷",
@@ -60,13 +61,23 @@ void Calculator::buttonClicked(const QString &text)
 
 
     if (text == "+" || text == "-" || text == "×" || text == "÷") {
-        m_leftOperand = m_display.toDouble();
-        m_pendingOperator = text;
-        m_subDisplay = QString("%1 %2").arg(m_display, text);
-        emit subDisplayChanged();
-        m_waitingForOperand = true;
-        m_doneCalculate = false;
-        return;
+        if (!m_pendingRightOperand) {
+            m_leftOperand = m_display.toDouble();
+            m_pendingOperator = text;
+            m_subDisplay = QString("%1 %2").arg(m_display, text);
+            emit subDisplayChanged();
+            m_waitingForOperand = true;
+            m_doneCalculate = false;
+            return;
+        }
+        else {
+            double rightOperand = m_display.toDouble();
+            calculate(rightOperand, m_pendingOperator);
+            m_subDisplay = QString("%1 %2").arg(QString::number(m_leftOperand), text);
+            m_pendingOperator = text;
+            emit subDisplayChanged();
+            return;
+        }
     }
 
     if (text == "=") {
@@ -78,6 +89,7 @@ void Calculator::buttonClicked(const QString &text)
         double rightOperand = m_display.toDouble();
         calculate(rightOperand, m_pendingOperator);
         m_pendingOperator.clear();
+        m_doneCalculate = true;
         emit subDisplayChanged();
         return;
     }
@@ -95,10 +107,13 @@ void Calculator::buttonClicked(const QString &text)
     if (isNumber) {
         if (m_display == "0" || m_waitingForOperand) {
             m_display = text;
+            if (m_pendingOperator != "")
+                m_pendingRightOperand = true;
             m_waitingForOperand = false;
         } else {
             m_display += text;
         }
+
         if (m_doneCalculate) {
             m_subDisplay.clear();
             emit subDisplayChanged();
@@ -118,6 +133,7 @@ void Calculator::clear()
     m_pendingOperator.clear();
     m_waitingForOperand = true;
     m_doneCalculate = true;
+    m_pendingRightOperand = false;
     emit displayChanged();
     emit subDisplayChanged();
 }
@@ -147,5 +163,5 @@ void Calculator::calculate(double rightOperand, const QString &op)
     emit displayChanged();
     m_leftOperand = result;
     m_waitingForOperand = true;
-    m_doneCalculate = true;
+    m_pendingRightOperand = false;
 }
